@@ -25,7 +25,10 @@ jobs:
           cache: pip
 
       - name: Instalacija zavisnosti
-        run: python -m pip install --upgrade pip && pip install -r requirements-dev.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+          pip install -e .
 
       - name: Ruff
         run: ruff check .
