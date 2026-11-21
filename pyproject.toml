@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=78"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mini-projekat-3-api"
+version = "1.0.0"
+description = "Testiran i obezbijeđen FastAPI servis za obračun rezervacije"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi==0.165.0",
+    "pydantic==2.12.4",
+    "uvicorn==0.54.0",
+]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers --cov=app --cov-branch --cov-report=term-missing --cov-fail-under=95"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "S"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["app"]
+warn_unreachable = true
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+
